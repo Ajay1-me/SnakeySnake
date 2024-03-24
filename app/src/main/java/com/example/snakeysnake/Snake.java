@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
-public class Snake {
+public class Snake implements Drawable, Movable{
     // The location in the grid of all the segments
     private ArrayList<Point> segmentLocations;
 
@@ -126,7 +126,7 @@ public class Snake {
     }
 
 
-    void move() {
+    public void move() {
         // Move the body
         // Start at the back and move it
         // to the position of the segment in front of it
@@ -204,7 +204,7 @@ public class Snake {
         return false;
     }
 
-    void draw(Canvas canvas, Paint paint) {
+    public void draw(Canvas canvas, Paint paint) {
 
         // Don't run this code if ArrayList has nothing in it
         if (!segmentLocations.isEmpty()) {
@@ -257,7 +257,7 @@ public class Snake {
 
 
     // Handle changing direction
-    void switchHeading(MotionEvent motionEvent) {
+    public void switchHeading(MotionEvent motionEvent) {
 
         // Is the tap on the right hand side?
         if (motionEvent.getX() >= halfWayPoint) {

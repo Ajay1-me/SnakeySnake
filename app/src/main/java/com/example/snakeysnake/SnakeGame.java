@@ -16,7 +16,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import java.io.IOException;
 
-public class SnakeGame extends SurfaceView implements Runnable {
+public class SnakeGame extends SurfaceView implements Runnable, SnakeEngineManager {
 
     // Objects for the game loop/thread
     private Thread mThread = null;
@@ -262,7 +262,7 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
 
     // Stop the thread
-    public void pause() {
+    public void onPause() {
         mPlaying = false;
         try {
             mThread.join();
@@ -273,7 +273,7 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
 
     // Start the thread
-    public void resume() {
+    public void onResume() {
         mPlaying = true;
         mThread = new Thread(this);
         mThread.start();

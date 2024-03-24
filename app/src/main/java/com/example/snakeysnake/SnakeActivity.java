@@ -5,7 +5,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 
-public class SnakeActivity extends Activity {
+public class SnakeActivity extends Activity implements SnakeEngineManager{
 
     // Declare an instance of SnakeGame
     SnakeGame mSnakeGame;
@@ -29,17 +29,27 @@ public class SnakeActivity extends Activity {
         setContentView(mSnakeGame);
     }
 
+
+
+
+    /*
+    Changed the onResume and onPause methods to public from protected. What are the implications?
+    */
+
+
+
+
     // Start the thread in snakeEngine
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        mSnakeGame.resume();
+        mSnakeGame.onResume();
     }
 
     // Stop the thread in snakeEngine
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
-        mSnakeGame.pause();
+        mSnakeGame.onPause();
     }
 }
