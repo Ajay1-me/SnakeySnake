@@ -7,18 +7,18 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import java.util.Random;
-public class Apple implements Drawable {
+public abstract class Apple implements Drawable {
     // The location of the apple on the grid
     // Not in pixels
-    private Point location = new Point();
+    protected Point location = new Point();
 
     // The range of values we can choose from
     // to spawn an apple
-    private Point mSpawnRange;
-    private int mSize;
+    protected Point mSpawnRange;
+    protected int mSize;
 
     // An image to represent the apple
-    private Bitmap mBitmapApple;
+    protected Bitmap mBitmapApple;
 
     /// Set up the apple in the constructor
     Apple(Context context, Point sr, int s){
@@ -52,10 +52,7 @@ public class Apple implements Drawable {
     }
 
     // Draw the apple
-    public void draw(Canvas canvas, Paint paint){
-        canvas.drawBitmap(mBitmapApple,
-                location.x * mSize, location.y * mSize, paint);
+    public abstract void draw(Canvas canvas, Paint paint);
 
-    }
 
 }
