@@ -5,7 +5,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 
-public class SnakeActivity extends Activity implements SnakeEngineManager{
+public class SnakeActivity extends Activity {
 
     // Declare an instance of SnakeGame
     SnakeGame mSnakeGame;
@@ -41,15 +41,15 @@ public class SnakeActivity extends Activity implements SnakeEngineManager{
 
     // Start the thread in snakeEngine
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-        mSnakeGame.onResume();
+        mSnakeGame.resume();
     }
 
     // Stop the thread in snakeEngine
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
-        mSnakeGame.onPause();
+        mSnakeGame.pause();
     }
 }
