@@ -30,15 +30,6 @@ public class SnakeActivity extends Activity {
     }
 
 
-
-
-    /*
-    Changed the onResume and onPause methods to public from protected. What are the implications?
-    */
-
-
-
-
     // Start the thread in snakeEngine
     @Override
     protected void onResume() {
