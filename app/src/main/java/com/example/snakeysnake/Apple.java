@@ -30,6 +30,11 @@ public class Apple implements Drawable {
         // Hide the apple off-screen until the game starts
         location.x = -10;
 
+        initializeBitmap(context, s);
+    }
+
+    // Method to initailize the bitmap
+    public void initializeBitmap(Context context, int s){
         // Load the image to the bitmap
         mBitmapApple = BitmapFactory.decodeResource(context.getResources(), R.drawable.apple);
 
