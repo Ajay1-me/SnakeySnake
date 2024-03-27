@@ -251,18 +251,18 @@ public class SnakeGame extends SurfaceView implements Runnable {
             mCanvas = mSurfaceHolder.lockCanvas();
 
             // Fill the screen with a color
-            mCanvas.drawColor(Color.GRAY);
+            mCanvas.drawColor(Color.BLACK);
 
             // Set the size and color of the mPaint for the text
             mPaint.setColor(Color.argb(255, 255, 255, 255));
-            mPaint.setTextSize(120);
+            mPaint.setTextSize(80);
 
             // Draw the score
             mCanvas.drawText("" + mScore, 20, 120, mPaint);
 
             //Write the names of the players on the screen
-            mCanvas.drawText("Ajaydeep Singh", 1300, 100, mPaint);
-            mCanvas.drawText("Harmanjot Singh", 1300, 250, mPaint);
+            mCanvas.drawText("| Ajaydeep Singh", 1600, 100, mPaint);
+            mCanvas.drawText("Harmanjot Singh", 950, 100, mPaint);
 
             // Draw the apple and the snake
             mApple.draw(mCanvas, mPaint);
