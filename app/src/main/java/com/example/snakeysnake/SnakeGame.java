@@ -260,6 +260,10 @@ public class SnakeGame extends SurfaceView implements Runnable {
             // Draw the score
             mCanvas.drawText("" + mScore, 20, 120, mPaint);
 
+            //Write the names of the players on the screen
+            mCanvas.drawText("Ajaydeep Singh", 1300, 100, mPaint);
+            mCanvas.drawText("Harmanjot Singh", 1300, 250, mPaint);
+
             // Draw the apple and the snake
             mApple.draw(mCanvas, mPaint);
             mSnake.draw(mCanvas, mPaint);
