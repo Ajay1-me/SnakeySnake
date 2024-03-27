@@ -30,10 +30,11 @@ public class Button {
     private volatile boolean mPlaying = false;
 
 
-
+    int x = 200;
+    int y = 40;
 
     /// Set up the apple in the constructor
-    Button(Context context, Point sr, int s){
+    Button(Context context, Point sr, int s, int width, int height){
         int buttonWidth = 150; // Adjust but
         // ton width as needed
         int buttonHeight = 130; // Adjust button height as needed
@@ -50,7 +51,7 @@ public class Button {
 
     // Draw the apple
     public void draw(Canvas canvas, Paint paint){
-        canvas.drawBitmap(buttonBitmap, 200, 30, paint);
+        canvas.drawBitmap(buttonBitmap, x, y, paint);
 
     }
 

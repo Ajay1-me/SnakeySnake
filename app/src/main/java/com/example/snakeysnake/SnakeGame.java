@@ -118,14 +118,17 @@ public class SnakeGame extends SurfaceView implements Runnable {
                         mNumBlocksHigh),
                 blockSize);
 
+        int buttonWidth = 200; //Adjust button width as needed
+        int buttonHeight = 100;
         mButton = new Button(context,
                 new Point(NUM_BLOCKS_WIDE,
                         mNumBlocksHigh),
-                blockSize);
+                blockSize, buttonWidth, buttonHeight);
 
 
-        int buttonWidth = 200; // Adjust button width as needed
-        int buttonHeight = 100; // Adjust button height as needed
+        int buttonX = mButton.x; // Adjust button width as needed
+        int buttonY = mButton.y; // Adjust button height as needed
+        buttonRect = new Rect(buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
         /*
         // Initialize button bitmap
         buttonBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_pause);
@@ -141,10 +144,6 @@ public class SnakeGame extends SurfaceView implements Runnable {
          */
 
 
-        // Set button position (example: center of the screen)
-        int buttonX = 200;
-        int buttonY = 30;
-        buttonRect = new Rect(buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
 
     }
 
@@ -294,14 +293,9 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
-
-
         if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
         }
-
-
-
 
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_UP:
@@ -356,11 +350,4 @@ public class SnakeGame extends SurfaceView implements Runnable {
         mThread.start();
     }
 
-    public void togglePause() {
-        mPaused = !mPaused;
-    }
-
-    public boolean isPaused() {
-        return mPaused;
-    }
 }
