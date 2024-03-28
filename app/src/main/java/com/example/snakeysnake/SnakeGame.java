@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.graphics.Typeface;
 import java.io.IOException;
 
 public class SnakeGame extends SurfaceView implements Runnable {
@@ -98,6 +99,10 @@ public class SnakeGame extends SurfaceView implements Runnable {
         // Initialize the drawing objects
         mSurfaceHolder = getHolder();
         mPaint = new Paint();
+
+        //Initialize the font
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/super_happy.ttf");
+        mPaint.setTypeface(typeface);
 
         // Call the constructors of our two game objects
         mApple = new Apple(context,
