@@ -38,8 +38,6 @@ public class Snake implements Drawable, Movable{
     private Bitmap mBitmapHeadLeft;
     private Bitmap mBitmapHeadUp;
     private Bitmap mBitmapHeadDown;
-
-    private Bitmap nBitmapHead;
     // A bitmap for the body
     private Bitmap mBitmapBody;
 
@@ -87,6 +85,8 @@ public class Snake implements Drawable, Movable{
         mBitmapHeadDown = Bitmap
                 .createBitmap(mBitmapHeadRight,
                         0, 0, ss, ss, matrix, true);
+
+
 
         // Create and scale the body
         mBitmapBody = BitmapFactory
@@ -183,8 +183,7 @@ public class Snake implements Drawable, Movable{
         if (segmentLocations.get(0).x == l.x &&
                 segmentLocations.get(0).y == l.y) {
 
-            // Add a new Point to the list
-            // located off-screen.
+            // Add a new Point to the list located off-screen.
             // This is OK because on the next call to
             // move it will take the position of
             // the segment in front of it

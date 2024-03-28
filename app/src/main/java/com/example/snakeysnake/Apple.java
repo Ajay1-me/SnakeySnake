@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import java.util.Random;
-public class Apple implements Drawable {
+public class Apple implements Drawable, LocationObject {
     // The location of the apple on the grid
     // Not in pixels
     private Point location = new Point();
@@ -52,7 +52,7 @@ public class Apple implements Drawable {
 
     // Let SnakeGame know where the apple is
     // SnakeGame can share this with the snake
-    Point getLocation(){
+    public Point getLocation(){
         return location;
     }
 

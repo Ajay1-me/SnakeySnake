@@ -222,12 +222,6 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
     // Do all the drawing
     public void draw() {
-        /*super.draw(canvas);
-
-        // Draw the button
-        canvas.drawBitmap(buttonBitmap, 100, 100, paint);
-
-         */
 
         // Get a lock on the mCanvas
         if (mSurfaceHolder.getSurface().isValid()) {

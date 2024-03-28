@@ -10,19 +10,8 @@ import android.graphics.Rect;
 
 public class Button implements Drawable{
 
-    private Point location = new Point();
-
     // An image to represent the button
     private Bitmap buttonBitmap;
-
-    // Objects for the game loop/thread
-    private Thread mThread = null;
-
-    // Is the game currently playing and or paused?
-    private volatile boolean mPlaying = false;
-
-
-
 
 
     int x = 200;
