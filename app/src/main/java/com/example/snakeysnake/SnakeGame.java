@@ -55,7 +55,8 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
 
     private boolean isPaused = true;
-
+    private final int buttonWidth = 150; // Adjust button width as needed
+    private final int buttonHeight = 100; // Adjust button height as needed
 
     // This is the constructor method that gets called
     // from SnakeActivity
@@ -67,7 +68,39 @@ public class SnakeGame extends SurfaceView implements Runnable {
         // How many blocks of the same size will fit into the height
         mNumBlocksHigh = size.y / blockSize;
 
-        // Initialize the SoundPool
+        setUpSound(context);
+
+        // Initialize the drawing objects
+        mSurfaceHolder = getHolder();
+        mPaint = new Paint();
+
+        // Call the constructors of our three game objects
+        mApple = new Apple(context,
+                new Point(NUM_BLOCKS_WIDE,
+                        mNumBlocksHigh),
+                blockSize);
+
+        mSnake = new Snake(context,
+                new Point(NUM_BLOCKS_WIDE,
+                        mNumBlocksHigh),
+                blockSize);
+
+
+        mButton = new Button(context,
+                new Point(NUM_BLOCKS_WIDE,
+                        mNumBlocksHigh),
+                blockSize, buttonWidth,buttonHeight);
+
+
+        // Set button position (example: center of the screen)
+        float buttonX = mButton.x;
+        float buttonY = mButton.y;
+        buttonRect = new Rect((int)mButton.x, (int)mButton.y, (int)mButton.x + buttonWidth, (int)mButton.y + buttonHeight);
+
+    }
+
+    public void setUpSound(Context context){
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_MEDIA)
@@ -95,54 +128,8 @@ public class SnakeGame extends SurfaceView implements Runnable {
         } catch (IOException e) {
             // Error
         }
-
-        // Initialize the drawing objects
-        mSurfaceHolder = getHolder();
-        mPaint = new Paint();
-
-        //Initialize the font
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/Lobster-Regular.ttf");
-        mPaint.setTypeface(typeface);
-
-        // Call the constructors of our two game objects
-        mApple = new Apple(context,
-                new Point(NUM_BLOCKS_WIDE,
-                        mNumBlocksHigh),
-                blockSize);
-
-        mSnake = new Snake(context,
-                new Point(NUM_BLOCKS_WIDE,
-                        mNumBlocksHigh),
-                blockSize);
-
-        int buttonWidth = 200; //Adjust button width as needed
-        int buttonHeight = 100;
-        mButton = new Button(context,
-                new Point(NUM_BLOCKS_WIDE,
-                        mNumBlocksHigh),
-                blockSize, buttonWidth, buttonHeight);
-
-
-        int buttonX = mButton.x; // Adjust button width as needed
-        int buttonY = mButton.y; // Adjust button height as needed
-        buttonRect = new Rect(buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
-        /*
-        // Initialize button bitmap
-        buttonBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_pause);
-        buttonBitmap = Bitmap.createScaledBitmap(buttonBitmap, buttonWidth, buttonHeight, false);
-        */
-
-        /*
-        // Load the image to the bitmap
-        buttonBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_pause);
-
-        // Resize the bitmap
-        buttonBitmap = Bitmap.createScaledBitmap(buttonBitmap, buttonWidth, buttonHeight, false);
-         */
-
-
-
     }
+
 
 
     // Called to start a new game
@@ -253,11 +240,14 @@ public class SnakeGame extends SurfaceView implements Runnable {
             mPaint.setColor(Color.argb(255, 255, 255, 255));
             mPaint.setTextSize(80);
 
+            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "font/Lobster-Regular.ttf");
+            mPaint.setTypeface(font);
+
             // Draw the score
             mCanvas.drawText("" + mScore, 20, 100, mPaint);
 
             //Write the names of the players on the screen
-            mCanvas.drawText("|  Ajaydeep Singh", 1625, 100, mPaint);
+            mCanvas.drawText(" | Ajaydeep Singh", 1600, 100, mPaint);
             mCanvas.drawText("Harmanjot Singh", 1025, 100, mPaint);
 
             // Draw the apple and the snake
@@ -345,6 +335,14 @@ public class SnakeGame extends SurfaceView implements Runnable {
         mPlaying = true;
         mThread = new Thread(this);
         mThread.start();
+    }
+
+    public void togglePause() {
+        mPaused = !mPaused;
+    }
+
+    public boolean isPaused() {
+        return mPaused;
     }
 
 }

@@ -9,15 +9,11 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 public class Button implements Drawable{
-    // The location of the apple on the grid
-    // Not in pixels
+
     private Point location = new Point();
 
     // An image to represent the button
     private Bitmap buttonBitmap;
-    private Rect buttonRect;
-
-    private boolean isPaused = true;
 
     // Objects for the game loop/thread
     private Thread mThread = null;
@@ -28,48 +24,22 @@ public class Button implements Drawable{
 
 
 
-    int x = 200;
-    int y = 40;
 
-    /// Set up the apple in the constructor
+    int x = 200;
+    int y = 30;
+
+    /// Set up the button in the constructor
     Button(Context context, Point sr, int s, int width, int height){
-        int buttonWidth = 150; // Adjust but
-        // ton width as needed
-        int buttonHeight = 130; // Adjust button height as needed
         // Load the image to the bitmap
         buttonBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_pause);
         // Resize the bitmap
-        buttonBitmap = Bitmap.createScaledBitmap(buttonBitmap, buttonWidth, buttonHeight, false);
-
-        // Set button position (example: center of the screen)
-        int buttonX = 20;
-        int buttonY = 80;
-
+        buttonBitmap = Bitmap.createScaledBitmap(buttonBitmap, width, height, false);
     }
 
     // Draw the apple
     public void draw(Canvas canvas, Paint paint){
         canvas.drawBitmap(buttonBitmap, x, y, paint);
 
-    }
-
-
-    // Stop the thread
-    public void pause() {
-        mPlaying = false;
-        try {
-            mThread.join();
-        } catch (InterruptedException e) {
-            // Error
-        }
-    }
-
-
-    // Start the thread
-    public void resume() {
-        mPlaying = true;
-        mThread = new Thread((Runnable) this);
-        mThread.start();
     }
 
 }
