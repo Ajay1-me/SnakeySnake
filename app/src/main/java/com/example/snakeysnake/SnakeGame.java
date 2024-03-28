@@ -101,7 +101,7 @@ public class SnakeGame extends SurfaceView implements Runnable {
         mPaint = new Paint();
 
         //Initialize the font
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/super_happy.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/Lobster-Regular.ttf");
         mPaint.setTypeface(typeface);
 
         // Call the constructors of our two game objects
@@ -254,11 +254,11 @@ public class SnakeGame extends SurfaceView implements Runnable {
             mPaint.setTextSize(80);
 
             // Draw the score
-            mCanvas.drawText("" + mScore, 20, 120, mPaint);
+            mCanvas.drawText("" + mScore, 20, 100, mPaint);
 
             //Write the names of the players on the screen
-            mCanvas.drawText("| Ajaydeep Singh", 1600, 100, mPaint);
-            mCanvas.drawText("Harmanjot Singh", 950, 100, mPaint);
+            mCanvas.drawText("|  Ajaydeep Singh", 1625, 100, mPaint);
+            mCanvas.drawText("Harmanjot Singh", 1025, 100, mPaint);
 
             // Draw the apple and the snake
             mApple.draw(mCanvas, mPaint);
@@ -274,7 +274,7 @@ public class SnakeGame extends SurfaceView implements Runnable {
 
                 // Draw the message
                 // We will give this an international upgrade soon
-                mCanvas.drawText("Tap To Play!", 425, 550, mPaint);
+                mCanvas.drawText("Tap To Play!", 450, 550, mPaint);
                 /*mCanvas.drawText(getResources().
                                 getString(R.string.tap_to_play),
                         200, 700, mPaint);
