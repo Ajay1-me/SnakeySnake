@@ -4,8 +4,6 @@ package com.example.snakeysnake;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -47,17 +45,11 @@ public class SnakeGame extends SurfaceView implements Runnable {
     private Canvas mCanvas;
     private SurfaceHolder mSurfaceHolder;
     private Paint mPaint;
-
     // A snake ssss
     private Snake mSnake;
     // And an apple
     private Apple mApple;
-
     private Button mButton;
-
-    /*
-    private Bitmap buttonBitmap;
-    */
     private Rect buttonRect;
 
 

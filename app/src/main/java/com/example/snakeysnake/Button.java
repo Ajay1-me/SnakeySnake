@@ -7,12 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.util.Log;
-import android.view.MotionEvent;
 
-import java.util.Random;
-
-public class Button {
+public class Button implements Drawable{
     // The location of the apple on the grid
     // Not in pixels
     private Point location = new Point();
@@ -28,6 +24,8 @@ public class Button {
 
     // Is the game currently playing and or paused?
     private volatile boolean mPlaying = false;
+
+
 
 
     int x = 200;
@@ -55,29 +53,6 @@ public class Button {
 
     }
 
-    /*
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-
-
-        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            // Check if touch event occurred within the button bounds
-            if (buttonRect.contains((int) motionEvent.getX(), (int) motionEvent.getY())) {
-                // Toggle game pause state
-                if (isPaused) {
-                    // Game paused, perform pause actions
-                    pause();
-                } else {
-                    // Game resumed, perform resume actions
-                    resume();
-                }
-                return true; // Consume touch event
-            }
-        }
-
-        return true;
-    }
-
-     */
 
     // Stop the thread
     public void pause() {
